@@ -1,5 +1,5 @@
 {% set name = "tacco" %}
-{% set version = "0.3.0" %}
+{% set version = "0.4.0.post1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/tacco-{{ version }}.tar.gz
-  sha256: 9ea3d87ffbbc91ce67b8929f54895c57f080a391ab9bfccc1d3e626314abeab6
+  sha256: b64a3a056bc36102c189de5108ccb55f33f35e292250da106dcb2d5817e4495d
 
 build:
   noarch: python
@@ -16,13 +16,13 @@ build:
 
 requirements:
   host:
-    - python >=3.7
+    - python >=3.7,!=3.8
     - setuptools
     - wheel
     - setuptools-scm
     - pip
   run:
-    - python >=3.7
+    - python >=3.7,!=3.8
     - requests
     - joblib
     - numba >=0.51.2
@@ -32,8 +32,8 @@ requirements:
     - sparse_dot_mkl >=0.7.3
     - scanpy >=1.7.0
     - statsmodels
-    - anndata <0.9.0
-    - pandas <2.0.0
+    - anndata >=0.9.0
+    - pandas >=1.1.0
     - scipy >=1.6.0
     - mkl
     - mkl-service
