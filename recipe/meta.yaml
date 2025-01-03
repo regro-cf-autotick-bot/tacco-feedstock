@@ -6,23 +6,23 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/tacco-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/tacco-{{ version }}.tar.gz
   sha256: b64a3a056bc36102c189de5108ccb55f33f35e292250da106dcb2d5817e4495d
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
 
 requirements:
   host:
-    - python >=3.7,!=3.8
+    - python {{ python_min }}
     - setuptools
     - wheel
     - setuptools-scm
     - pip
   run:
-    - python >=3.7,!=3.8
+    - python >={{ python_min }}
     - requests
     - joblib
     - numba >=0.51.2
@@ -50,6 +50,7 @@ test:
     - pytest -k "not test_benchmark_annotate"
   requires:
     - pytest
+    - python {{ python_min }}
 
 about:
   home: https://github.com/simonwm/tacco
